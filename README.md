@@ -21,6 +21,10 @@
 
 A detailed getting started guide can be found at [umami.is/docs](https://umami.is/docs/).
 
+For this fork's Cloudflare Workers setup and upgrade checklist, see:
+
+- [Cloudflare Workers setup (Framian fork)](docs/cloudflare-workers.md)
+
 ---
 
 ## 🛠 Installing from Source

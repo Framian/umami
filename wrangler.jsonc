@@ -1,0 +1,41 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": ".open-next/worker.js",
+  "name": "headlify-umami",
+  "account_id": "d45de9efb71ac29f8a1cbcc22cb5d0c1",
+  "compatibility_date": "2026-02-18",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "rules": [
+    {
+      "type": "CompiledWasm",
+      "globs": ["**/*.wasm"],
+      "fallthrough": true
+    }
+  ],
+  "hyperdrive": [
+    {
+      "binding": "HYPERDRIVE",
+      "id": "6ae8df5f354346a39406fe0542fdc6f6",
+      "localConnectionString": "postgresql://postgres:postgres@127.0.0.1:5432/umami"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  },
+  "env": {
+    "staging": {
+      "name": "headlify-umami-staging",
+      "hyperdrive": [
+        {
+          "binding": "HYPERDRIVE",
+          "id": "6ae8df5f354346a39406fe0542fdc6f6",
+          "localConnectionString": "postgresql://postgres:postgres@127.0.0.1:5432/umami"
+        }
+      ]
+    }
+  }
+}

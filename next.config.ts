@@ -165,6 +165,17 @@ if (cloudMode) {
 /** @type {import('next').NextConfig} */
 export default {
   reactStrictMode: false,
+  serverExternalPackages: ['@prisma/client', '.prisma/client', 'pg-cloudflare'],
+  outputFileTracingIncludes: {
+    '/*': ['./node_modules/pg-cloudflare/**/*'],
+  },
+  transpilePackages: [
+    '@prisma/adapter-pg',
+    '@prisma/adapter-pg-worker',
+    '@prisma/driver-adapter-utils',
+    '@prisma/pg-worker',
+    'pg',
+  ],
   env: {
     basePath,
     cloudMode,
@@ -179,6 +190,19 @@ export default {
   },
   typescript: {
     ignoreBuildErrors: true,
+  },
+  webpack(config) {
+    config.experiments = {
+      ...(config.experiments || {}),
+      asyncWebAssembly: true,
+    };
+
+    config.module.rules.push({
+      test: /\.wasm$/,
+      type: 'webassembly/async',
+    });
+
+    return config;
   },
   async headers() {
     return headers;

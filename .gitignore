@@ -13,6 +13,7 @@ package-lock.json
 # next.js
 /.next
 /out
+/.open-next
 
 # production
 /build
@@ -42,4 +43,3 @@ yarn-error.log*
 *.env.*
 
 *.dev.yml
-

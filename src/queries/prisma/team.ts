@@ -1,4 +1,4 @@
-import { Prisma, type Team } from '@/generated/prisma/client';
+import type { Prisma, Team } from '@/generated/prisma/client';
 import { ROLES } from '@/lib/constants';
 import { uuid } from '@/lib/crypto';
 import prisma from '@/lib/prisma';
